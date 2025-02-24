@@ -96,30 +96,6 @@ export default async function Page() {
                 <span>{channel.name}</span>
               </div>
             ))}
-            {/* <div className="flex items-center gap-2">
-              <Sparkles className="h-4 w-4 text-indigo-400" />
-              <span>general</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Sparkles className="h-4 w-4 text-indigo-400" />
-              <span>i-am-stuck</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Sparkles className="h-4 w-4 text-indigo-400" />
-              <span>architecture</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Sparkles className="h-4 w-4 text-indigo-400" />
-              <span>web-dev</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Sparkles className="h-4 w-4 text-indigo-400" />
-              <span>industry</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Sparkles className="h-4 w-4 text-indigo-400" />
-              <span>memes</span>
-            </div> */}
           </div>
           <Button
             asChild
@@ -164,12 +140,6 @@ export default async function Page() {
                   similar role within a community.
                 </li>
               </ul>
-              {/* <p className="pl-6">
-                <span className="text-indigo-400 italic">Discord</span> the
-                official term for communities on Discord - and for good reason.
-                We're not just a chat room, we're a guild of developers helping
-                each other grow.
-              </p> */}
             </div>
             <div className="pt-4 border-t border-zinc-800"></div>
           </div>
@@ -179,8 +149,15 @@ export default async function Page() {
       {/* Footer */}
       <footer className="border-t border-zinc-800 py-6">
         <div className="container mx-auto px-4 text-center text-sm text-zinc-400">
-          Built for developers, by developers. No AI, just real humans helping
-          humans.
+          Built by{" "}
+          <Link
+            href="https://weaklytyped.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-4"
+          >
+            Andrew
+          </Link>
         </div>
       </footer>
     </div>
