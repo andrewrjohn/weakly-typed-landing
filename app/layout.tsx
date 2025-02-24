@@ -12,10 +12,18 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const title = "Weakly Typed | The Developer Community for Humans";
+const description =
+  "Join a community of developers sharing knowledge and helping each other grow. No AI, just humans talking to humans.";
+
 export const metadata: Metadata = {
-  title: "Weakly Typed | The Developer Community for Humans",
-  description:
-    "Join a community of developers sharing knowledge and helping each other grow. No AI, just humans talking to humans.",
+  title,
+  description,
+  openGraph: {
+    title,
+    description,
+    images: "/og.png",
+  },
 };
 
 export default function RootLayout({
