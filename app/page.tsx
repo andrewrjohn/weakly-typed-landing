@@ -40,7 +40,7 @@ export default async function Page() {
             >
               {/* Join the Discord Community of {memberCount.toLocaleString()}{" "}
               members */}
-              Join the Discord Community
+              Join the Weakly Typed Community
             </Link>
           </Button>
         </div>
