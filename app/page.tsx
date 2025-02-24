@@ -4,8 +4,12 @@ import Link from "next/link";
 import { DISCORD_INVITE_LINK } from "@/lib/constants";
 import { getChannels } from "./actions";
 
+const SHOW_CHANNELS = 9;
+
 export default async function Page() {
-  const channels = (await getChannels()).slice(0, 12);
+  const allChannels = await getChannels();
+  const channels = allChannels.slice(0, SHOW_CHANNELS);
+  const unshownChannels = Math.max(0, allChannels.length - SHOW_CHANNELS);
   // Shoe member count when more members join
   // const memberCount = await getMemberCount();
 
@@ -89,13 +93,20 @@ export default async function Page() {
             comments, etc. Don't see what you need? Ask in the general channel
             and we'll get it sorted out.
           </p>
-          <div className="inline-grid grid-cols-2 gap-4 rounded-lg border border-zinc-800 bg-zinc-900/50 p-6 text-left sm:grid-cols-3">
-            {channels.map((channel) => (
-              <div key={channel.name} className="flex items-center gap-2">
-                <HashIcon className="h-4 w-4 text-indigo-400" />
-                <span>{channel.name}</span>
-              </div>
-            ))}
+          <div className="flex flex-col gap-2">
+            <div className="inline-grid grid-cols-2 gap-4 rounded-lg border border-zinc-800 bg-zinc-900/50 p-6 text-left sm:grid-cols-3">
+              {channels.map((channel) => (
+                <div key={channel.name} className="flex items-center gap-2">
+                  <HashIcon className="h-4 w-4 text-indigo-400" />
+                  <span>{channel.name}</span>
+                </div>
+              ))}
+            </div>
+            {unshownChannels > 0 && (
+              <p className="text-muted-foreground text-sm">
+                and {unshownChannels.toLocaleString()} more...
+              </p>
+            )}
           </div>
           <Button
             asChild
