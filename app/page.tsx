@@ -2,7 +2,13 @@ import { Button } from "@/components/ui/button";
 import { MessageSquare, Users, LinkIcon, Sparkles } from "lucide-react";
 import Link from "next/link";
 import { DISCORD_INVITE_LINK } from "@/lib/constants";
-export default function Page() {
+import { getChannels } from "./actions";
+
+export default async function Page() {
+  const channels = (await getChannels()).slice(0, 12);
+  // Shoe member count when more members join
+  // const memberCount = await getMemberCount();
+
   return (
     <div className="min-h-screen bg-zinc-900 text-zinc-50">
       {/* Hero Section */}
@@ -28,6 +34,8 @@ export default function Page() {
               target="_blank"
               rel="noopener noreferrer"
             >
+              {/* Join the Discord Community of {memberCount.toLocaleString()}{" "}
+              members */}
               Join the Discord Community
             </Link>
           </Button>
@@ -82,7 +90,13 @@ export default function Page() {
             and we'll get it sorted out.
           </p>
           <div className="inline-grid grid-cols-2 gap-4 rounded-lg border border-zinc-800 bg-zinc-900/50 p-6 text-left sm:grid-cols-3">
-            <div className="flex items-center gap-2">
+            {channels.map((channel) => (
+              <div key={channel.name} className="flex items-center gap-2">
+                <Sparkles className="h-4 w-4 text-indigo-400" />
+                <span>{channel.name}</span>
+              </div>
+            ))}
+            {/* <div className="flex items-center gap-2">
               <Sparkles className="h-4 w-4 text-indigo-400" />
               <span>general</span>
             </div>
@@ -105,7 +119,7 @@ export default function Page() {
             <div className="flex items-center gap-2">
               <Sparkles className="h-4 w-4 text-indigo-400" />
               <span>memes</span>
-            </div>
+            </div> */}
           </div>
           <Button
             asChild
